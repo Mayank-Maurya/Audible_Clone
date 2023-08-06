@@ -1,0 +1,106 @@
+<div class="main-div">
+    <mat-toolbar class="toolbar">
+        <img class="toolbarLogo" src="../assets/audible-logo.png" />
+        <span class="example-spacer"></span>
+        <div>
+            <button type="button" class="btn backToHomebtn md-btn-flat mt-2 mr-3" (click)="NavigateToLogin()">Login</button>
+            <!-- <button type="button" class="btn backToHomebtn" style="margin-right: 100px;" (click)="NavigateToLogin()">Login</button> -->
+        </div>
+    </mat-toolbar>
+    <div class="container1" style="margin-left: auto;margin-right: auto; margin-top: auto;margin-bottom: auto;">
+        <div class="row">
+            <div class="offset-1 col-10">
+                <br />
+                <div class="row">
+                    <div class="col-lg-6 col-md-8 col-xs-10 formBlock">
+                        <form class="form" [formGroup]="RegisterForm" (ngSubmit)="Register()">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" class="form-control" formControlName="fullName" id="fullName" placeholder="Full Name" />
+                                    <div *ngIf="RegisterForm.controls['fullName'].invalid && RegisterForm.controls['fullName'].touched">
+                                            <div  class="field-error-message text-danger" *ngIf="RegisterForm.controls['fullName'].hasError('required')">
+                                                Name is Mandatory
+                                            </div>
+                                            <div class="field-error-message text-danger" *ngIf="RegisterForm.controls['fullName'].dirty && RegisterForm.controls['fullName'].hasError('namePatternError')">
+                                                Name pattern is invalid
+                                            </div>
+                                    </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" formControlName="email" id="email"
+                                    placeholder="Email" />
+                                <div *ngIf="RegisterForm.controls['email'].invalid && RegisterForm.controls['email'].touched">
+                                    <div  class="field-error-message text-danger" *ngIf="RegisterForm.controls['email'].hasError('required')">
+                                        Email is Mandatory
+                                    </div>
+                                    <div class="field-error-message text-danger" *ngIf="RegisterForm.controls['email'].dirty && RegisterForm.controls['email'].hasError('email')">
+                                        Email pattern is invalid
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="userName">User Name</label>
+                                <input type="text" class="form-control" formControlName="userName" id="userName"
+                                    placeholder="User Name" />
+                                <div *ngIf="RegisterForm.controls['userName'].invalid && RegisterForm.controls['userName'].touched">
+                                    <div  class="field-error-message text-danger" *ngIf="RegisterForm.controls['userName'].hasError('required')">
+                                        User Name is Mandatory
+                                    </div>
+                                    <div class="field-error-message text-danger" *ngIf="RegisterForm.controls['userName'].dirty && RegisterForm.controls['userName'].hasError('namePatternError')">
+                                        User Name pattern is invalid
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" formControlName="password" id="password"
+                                    placeholder="Password" />
+                                <div *ngIf="RegisterForm.controls['password'].invalid && RegisterForm.controls['password'].touched">
+                                    <div  class="field-error-message text-danger" *ngIf="RegisterForm.controls['password'].hasError('required')">
+                                        Password is Mandatory
+                                    </div>
+                                    <div class="field-error-message text-danger" *ngIf="RegisterForm.controls['password'].dirty && RegisterForm.controls['password'].hasError('passwordPatternError')">
+                                        Password pattern is invalid
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm password</label>
+                                <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPassword"
+                                    placeholder="Confirm Password" />
+                                <div *ngIf="RegisterForm.controls['confirmPassword'].invalid && RegisterForm.controls['confirmPassword'].touched">
+                                    <div  class="field-error-message text-danger" *ngIf="RegisterForm.controls['confirmPassword'].hasError('required')">
+                                        Confirm Password is Mandatory
+                                    </div>
+                                    <div class="field-error-message text-danger" *ngIf="RegisterForm.controls['confirmPassword'].dirty && RegisterForm.controls['confirmPassword'].hasError('confirmPassword')">
+                                        Confirm Password pattern is invalid
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <button type="submit" class="btn"
+                                    [disabled]="RegisterForm.pristine || RegisterForm.invalid">
+                                    Register
+                                </button>
+                                <div *ngIf="errorMessage">
+                                    <span class="text-danger">{{errorMessage}}</span>
+                                </div>
+                                <div *ngIf="successMessage">
+                                    <span class="text-success">{{successMessage}}</span>
+                                </div>
+                                
+                            </div>
+                                
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

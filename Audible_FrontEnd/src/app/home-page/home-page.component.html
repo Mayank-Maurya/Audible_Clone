@@ -1,0 +1,321 @@
+<div class="adbl-page desktop">
+    
+    <!-- Toolbar tab contains profile picture btn for profile navigation and cart and logo  -->
+    <div>
+        <mat-toolbar class="toolbar">
+            <img class="toolbarLogo" src="../../assets/audible_logo.jpg"/>
+            <div class="header-right">
+                <ul class="erc-user-actions">
+                    
+                    <li class=" user-actions-item">
+                        <button mat-button [matMenuTriggerFor]="menu">
+                            <img class="profile-img" aria-label="Profile" src="../../assets/user_profile.jpg" >
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <p mat-menu-item style="margin-bottom: 1px;">
+                                Hi! {{userName}}
+                            </p>
+                            <button mat-menu-item (click)="onCartClicked()" >
+                              <mat-icon>shopping_cart</mat-icon>
+                              <span>Cart</span>
+                            </button>
+                            <button mat-menu-item (click)="LogOut()" >
+                              <mat-icon>logout</mat-icon>
+                              <span>Log out</span>
+                            </button>
+                          </mat-menu>
+                    </li>
+                </ul>
+            </div>
+        </mat-toolbar>
+        <mat-divider class="mat-divider1" ></mat-divider>
+    </div>
+    <!-- Search And Explore Functionality Div -->
+    <div>
+        <div class="erc-header">
+            <div class="header-content">
+                <div class="header-right2">
+                    <ul class="erc-user-actions">
+                        <li class="user-actions-item">
+                            <div class="text-click" (click)="onExplore()">
+                                <p>Explore</p>               
+                            </div>
+                        </li>
+                        <li class="user-actions-item">
+                            <mat-divider [vertical]="true" class="mat-divider mat-divider-vertical" ></mat-divider>
+                        </li>
+                        <li class="user-actions-item">
+                            <div class="text-click" (click)="onLibrary()">
+                                <p>Library</p>               
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header-right3">
+                    <ul>
+                        <li class="user-actions-item2" *ngIf="!isLibrary">
+                            <div class="bc-col-responsive">
+                                <ul class="erc-user-actions">
+                                    <li class="user-actions-item2">
+                                        <div class="text-click">
+                                            <input #searchInput type="search" [(ngModel)]="searchTerm" placeholder="Search...." class="form-control" />              
+                                        </div>
+                                    </li>
+                                    <li class="user-actions-item2">
+                                        <button mat-raised-button class="search-btn" color="accent" (click)="search()">
+                                            <mat-icon>search</mat-icon>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <br>
+                        <li class="user-actions-item2" *ngIf="!isLibrary">
+                            <div class="bc-col-responsive">
+                                <ul class="erc-user-actions">
+                                    <li class="user-actions-item2">
+                                        <div class="text-click">
+                                            Sort By: 
+                                        </div>
+                                    </li>
+                                    <li class="user-actions-item2">
+                                        <select name="sortBy" id="sortBy" [(ngModel)]="sortBy">
+                                        <option *ngFor="let a of checkList" value="{{a.name}}">{{a.name}}</option>
+                                        </select>
+                                    </li>
+                                    <li>
+                                        <mat-checkbox  [(ngModel)]="isAsc" (click)="onOrderChange()" ><mat-icon>swap_vert</mat-icon></mat-checkbox>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                  </div>
+            </div>
+
+        </div>
+        
+    </div>
+
+    <!-- main Component => contains list of audiobooks, filter , sort  -->
+    <br>
+
+    <div id >
+        <div id>
+            <div class="header-right4">
+                <ul class="erc-user-actions">
+                    <li class="user-actions-item3" *ngIf="!isLibrary" >
+                        <div>
+                            <div>
+                            Filter By
+                            </div>
+                            <br>
+                            <p>Genre</p>
+                            <div *ngFor="let obj of genreList">
+                                <mat-checkbox [(ngModel)]="obj.isSelected" (click)="onFilterSelected()">{{obj.data}}</mat-checkbox>
+                            </div>
+                            <br>
+                            <p>Rating</p>
+                            <div>
+                                <input type="range" min="0" max="5" step="1" value="5" [(ngModel)]="rating" (change)="onFilterSelected()" >
+                                <div class="rating">
+                                    {{rating}}<span>☆</span>
+                                </div>
+                            </div>
+                            <br>
+                            <p>Length</p>
+                            <div *ngFor="let obj of lenthList">
+                                <mat-checkbox [(ngModel)]="obj.isSelected" (click)="onFilterSelected()" >{{obj.data.start | toHours}}-{{obj.data.end | toHours}} Hours</mat-checkbox>
+                            </div>
+                            <br>
+                            <p>Releases</p>
+                            <div *ngFor="let obj of releasesList">
+                                <mat-checkbox [(ngModel)]="obj.isSelected" (click)="onFilterSelected()">{{obj.data}}</mat-checkbox>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="user-actions-item3" *ngIf="!isLibrary">
+                        <mat-divider [vertical]="true" class="mat-divider-vertical2" ></mat-divider>
+                    </li>
+                    <li class="user-actions-item3">
+                        <p *ngIf="!isLibrary" >Search Results</p>
+                        <p *ngIf="isLibrary">Let's Listen</p>
+                        <div>
+                            <span *ngIf="!isLibrary" >
+                                <ul class="bc-list bc-list-nostyle" *ngFor="let product of audioBookList" >
+                                    <li class="productListItem" aria-label="Book 1">
+                                        <div class="bc-row-responsive">
+                                            <div class="bc-col-responsive bc-col-0" >
+                                                <div class="bc-col-responsive">
+                                                    <div class="bc-row-responsive">
+                                                        <img src="http://localhost:8081/audiobook/image/{{product.AB.audioBookId}}" style="height: 300px;width:300px;" >
+                                                    </div>
+                                                    <div class="bc-row-responsive">
+                                                        <button type="button" (click)="onSamplePlay(product.AB.audioBookId)" style="width: 300px;height:50px;border-radius: 10px;margin-top: 5px;">
+                                                            <mat-icon *ngIf="!product.isSelected">play_arrow</mat-icon>
+                                                            <mat-icon *ngIf="product.isSelected">stop_circle</mat-icon>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="bc-col-responsive">
+                                                <span>
+                                                    <ul class="bc-list bc-list-nostyle">
+                                                        <li>
+                                                            <span>
+                                                                <div class="product-title" (click)="onProductClicked()">
+                                                                    <a class="bc-title" >{{product.AB.title}}</a>           
+                                                                </div>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span>
+                                                                <p style="font-weight:lighter">Author: <a style="font-weight: bold;" >{{product.AB.author}}</a></p> 
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span>
+                                                                <p style="font-weight:lighter">Narrator: <a style="font-weight: bold;" >{{product.AB.narrator}}</a></p> 
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span>
+                                                                <p style="font-weight:lighter">Length: <a style="font-weight: bold;" >{{product.AB.length}}</a></p> 
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span>
+                                                                <p style="font-weight:lighter">Description: <a style="font-weight: bold;" >{{product.AB.description}}</a></p> 
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span>
+                                                                <p style="font-weight:lighter">Rating: <a style="font-weight: bold;" >{{product.AB.avgRating}}<span>☆</span></a></p> 
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                            <div class="bc-col-responsive bc-col-2">
+                                                <span>
+                                                    <ul class="bc-list bc-list-nostyle">
+                                                        <li style="margin: 2px;">
+                                                            <span>
+                                                                Price: {{product.AB.price | currency}}
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span>
+                                                                <button type="button" class="bc-button" (click)="onAddToCart(product.AB.audioBookId)">
+                                                                    Add To Cart
+                                                                </button>
+                                                            </span>
+                                                        </li>
+                                                        <br>
+                                                        <li>
+                                                            <button type="button" class="bc-button" style="background-color: rgb(217, 211, 211);" (click)="onAddToWL()">
+                                                                Add To Wish List
+                                                            </button>
+                                                        </li>
+                                                       
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <mat-divider style="width:150vh"></mat-divider>
+                                        <br>
+                                    </li>
+                                </ul>
+                            </span>
+
+                            <span *ngIf="isLibrary" >
+                                <app-library (stopMusicPlayback)="stopMusicPlayback($event)" (setInitialSong)="setInitialSong($event)" (messageEvent)="recievedMsg($event)"></app-library>
+                            </span>
+                        </div>
+                        <div *ngIf="!isLibrary" >
+                            <ul class="erc-user-actions" >
+                                <li class="user-actions-item2" >
+                                    <div class="header-righ2">
+                                        <div class="bc-col-responsive">
+                                            <ul class="erc-user-actions">
+                                                <li class="user-actions-item4">
+                                                    <div style="font-weight:lighter;">
+                                                        Page Size : 
+                                                    </div>
+                                                </li>
+                                                <li class="user-actions-item4">
+                                                    <input type="number" [(ngModel)]="pageSize" min="1" max="{{maxPageSize}}" value={{pageSize}} inputmode="numeric" (change)="onPageSizeChange()" >
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="user-actions-item2">
+                                    <div class="header-right">
+                                        <div class="bc-col-responsive">
+                                            <ul class="erc-user-actions">
+                                                <li class="user-actions-item4">
+                                                    <div style="font-weight:lighter;">
+                                                        Page : 
+                                                    </div>
+                                                </li>
+                                                <li class="user-actions-item4">
+                                                    <input type="number" [(ngModel)]="pageNum" min="1" max="{{maxPages}}" value={{pageNum}} (change)="onPageNumChange()" >
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+<div>
+    <mat-toolbar *ngIf="isLibrary" style="bottom: 0; position: fixed; max-width: 100%; margin-left: -15px; background-color: white;">
+        <mat-toolbar-row>
+            <div class="time-slider">
+                <span>{{currentTime}}</span>
+                <input style="width: 93%;" type="range" min="0" max="{{duration2}}" [value]="seek"
+                    (input)="setSeekTo($event)">
+                <span>{{duration}}</span>
+            </div>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="media-action-bar">
+            <div table="control-wrapper"
+                style="display: flex; justify-content: center;width: 100%; position: relative;">
+                <div>
+                    <button mat-button [disabled]="isFirstPlaying" (click)="previous()">
+                        <mat-icon class="mp" mat-list-icon>skip_previous</mat-icon>
+                    </button>
+                    <button mat-button (click)="pause()">
+                        <mat-icon class="mp" *ngIf="!isPlaying"
+                            
+                            mat-list-icon>play_circle_filled</mat-icon>
+                        <mat-icon class="mp" *ngIf="isPlaying"
+                            
+                            mat-list-icon>pause_circle_filled</mat-icon>
+                    </button>
+                    <button mat-button [disabled]="isLastPlaying" (click)="next()">
+                        <mat-icon class="mp" mat-list-icon>skip_next</mat-icon>
+                    </button>
+                </div>
+                <div style="position: absolute;left:0px;display: flex;">
+                    <mat-icon mat-list-icon>volume_up</mat-icon>
+                    <input type="range" min="0" max="1" step="0.01" value="0.5" (input)="setVolume($event)">
+                </div>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
+

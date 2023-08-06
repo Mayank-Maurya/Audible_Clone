@@ -1,0 +1,191 @@
+.main-div{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(51,51,51,0.7);
+    z-index: 10;
+    background-image: url('../../assets/background.jpg');
+}
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+.cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height:60vh;
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+    height: 50px;
+  }
+.imageUser{
+    height: 25px;
+    width: 40px;
+    margin-right: 20px;
+}
+
+.toolbar{
+    border: 1px;
+    box-shadow: 10px;background-color: white;
+}
+.toolbarLogo{
+    width: 100px;
+    height: 30px;
+}
+
+.companyName{
+    font-size: 150%;
+}
+
+.mat-toolbar{
+  height: 7vh;
+  border: 10px;
+  border-color: black;
+}
+
+div {
+    overflow: inherit;
+}
+
+.mat-sidenav-container{
+  background-color: lightskyblue;
+  min-height: 93vh !important;
+}
+
+a{
+    text-decoration: none;
+    font-size: 110%;
+    white-space: normal;
+}
+
+button{
+    font-size: 110%;
+    min-width: min-content;
+}
+
+.example-icon {
+    padding: 0 14px;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .mat-sidenav-content{
+      font-size: 200%;
+      text-align: center;
+  }
+
+  .formBlock
+{
+    /* border : 3px solid grey; */
+    
+    border-radius : 25px;
+    padding : 25px;
+}
+
+ 
+
+label
+{
+    font-weight : bold;
+}
+
+ 
+
+div.form-check-inline > label
+{
+    font-weight : normal;
+}
+
+ 
+
+button, input[type=submit]
+{
+    color : #fff;
+    background-color : #343a40;
+    border-color : #343a40;
+    width : 100%;
+}
+
+ 
+
+button:hover,
+input[type=submit]:hover
+{
+    color : #fff;
+    background-color : #23272b;
+    border-color : #1d2124;
+}
+
+ 
+
+button:disabled,
+input[type=submit]:disabled
+{
+    color : #fff;
+    background-color : #343a40;
+    border-color : #343a40;
+    cursor : not-allowed !important;
+}
+
+ 
+
+.ng-dirty.ng-invalid:not(form)
+{    
+    border : 3px solid #a94442;
+}
+.ng-dirty.ng-invalid:not(form):focus
+{    
+    border : 3px solid #a94442;
+}
+
+ 
+
+.ng-dirty.ng-valid:not(form)
+{    
+    border : 3px solid #56b91c;
+}
+.ng-dirty.ng-valid:not(form):focus
+{    
+    border : 3px solid #56b91c;
+}
+
+.backToHomebtn:hover {
+    background-color: orange;
+}
+.backToHomebtn{
+    background-color: white;
+    color: black;
+}
+
+div.text-success,
+div.text-danger,
+span.text-success,
+span.text-danger
+{
+    white-space : pre-line;
+    font-weight: 500;
+}
+
+.container1{
+    
+    position: absolute;
+    width: 50%;
+    height: 500px;
+    left: 35%;
+    top:100px;
+    margin: 0 0 0 -10%
+}

@@ -1,0 +1,76 @@
+<ul class="bc-list bc-list-nostyle" *ngFor="let product of audioBookList" >
+    <li class="productListItem" aria-label="Book 1">
+        <div class="bc-row-responsive">
+            <div class="bc-col-responsive bc-col-0">
+                <div class="bc-col-responsive">
+                    <div class="bc-row-responsive">
+                        <img src="http://localhost:8081/audiobook/image/{{product.AB.audioBookId}}" style="height: 300px;width:300px;" >
+                    </div>
+                    <div class="bc-row-responsive">
+                        <button type="button" (click)="emitMessage(product.AB.audioBookId)"  style="width: 300px;height:50px;border-radius: 10px;margin-top: 5px;" >
+                        <mat-icon *ngIf="!product.isSelected">play_arrow</mat-icon>
+                        <mat-icon *ngIf="product.isSelected">stop_circle</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="bc-col-responsive">
+                <span>
+                    <ul class="bc-list bc-list-nostyle">
+                        <li>
+                            <span>
+                                <div class="product-title" (click)="onProductClicked()">
+                                    <a class="bc-title" >{{product.AB.title}}</a>           
+                                </div>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <p style="font-weight:lighter">Author: <a style="font-weight: bold;" >{{product.AB.author}}</a></p> 
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <p style="font-weight:lighter">Narrator: <a style="font-weight: bold;" >{{product.AB.narrator}}</a></p> 
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <p style="font-weight:lighter">Length: <a style="font-weight: bold;" >{{product.AB.length}}</a></p> 
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <p style="font-weight:lighter">Description: <a style="font-weight: bold;" >{{product.AB.description}}</a></p> 
+                            </span>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+            <div class="bc-col-responsive1 bc-col-2">
+                <span>
+                    <ul class="bc-list bc-list-nostyle">
+                        <li>
+                            <span>
+                                <button type="button" class="bc-button" (click)="onDownloadAB()">
+                                    Download
+                                </button>
+                            </span>
+                        </li>
+                        <br>
+                        <li>
+                            <button type="button" class="bc-button" style="background-color: rgb(217, 211, 211);" (click)="onDeleteAB(product.AB.audioBookId)">
+                                Delete
+                            </button>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+        <br>
+        <mat-divider style="width:150vh" ></mat-divider>
+        <br>
+    </li>
+</ul>
+<br><br><br><br><br><br>

@@ -1,0 +1,44 @@
+<div  class="main-div">
+    <mat-toolbar class="toolbar">
+        <img class="toolbarLogo" src="../assets/audible_logo.jpg" />
+        <span class="example-spacer"></span>
+        <div>
+            <button type="button" class="btn backToHomebtn md-btn-flat mt-2 mr-3" (click)="NavigateToRegister()">Register</button>
+        </div>
+    </mat-toolbar>
+    <div class="container1" style="margin-left: auto;margin-right: auto; margin-top: auto;margin-bottom: auto;">
+        <div class="row">
+            <div class="offset-1 col-10">
+                <br />
+                <div class="row">
+                    <div class="col-lg-6 col-md-8 col-xs-10 formBlock">
+                        <form class="form" [formGroup]="LoginForm" (ngSubmit)="Login()">
+                            <div class="form-group">
+                                <label for="username">User Name</label>
+                                <input type="text" class="form-control" formControlName="username" id="username"
+                                    placeholder="User Name" />
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="password">Pass Word</label>
+                                <input type="password" class="form-control" formControlName="password" id="password"
+                                    placeholder="Password" />
+                            </div>
+
+                            <br>
+                            <div class="form-group">
+                                <button type="submit" class="btn"
+                                    [disabled]="LoginForm.pristine || LoginForm.invalid">
+                                    Login
+                                </button>
+                            </div>
+                                <!-- <span class="text-danger" *ngIf="errorMessage">{{
+                                    errorMessage
+                                    }}</span> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
