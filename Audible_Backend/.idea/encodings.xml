@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/AudibleCart/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/AudibleCart/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/AudioBook/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/AudioBook/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Customer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Customer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/GatewayMS/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/GatewayMS/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PaymentMS/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PaymentMS/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,37 @@
+spring: 
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+              allowedOrigins: "*"
+              allowedMethods: "*"
+              allowedHeaders: "*"  
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: customerMS
+          uri: lb://customerMS
+          predicates:
+            - Path= /user/**
+            
+            
+        - id: audiobookMS
+          uri: lb://audiobookMS
+          predicates:
+            - Path= /audiobook/**
+            
+            
+        - id: cartMS
+          uri: lb://cartMS
+          predicates:
+            - Path= /cart/** , /createTransaction/**
+
+
+        - id: purchaseMS
+          uri: lb://purchaseMS
+          predicates:
+            - Path= /payment/**, /createTransaction/**                                                                              

@@ -1,0 +1,78 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Customer",
+            "request": "launch",
+            "mainClass": "com.audiocart.Customer",
+            "projectName": "Customer"
+        },
+        {
+            "type": "java",
+            "name": "AudioBook",
+            "request": "launch",
+            "mainClass": "com.audiocart.AudioBook",
+            "projectName": "AudioBook"
+        },
+        {
+            "type": "java",
+            "name": "DemoApplication",
+            "request": "launch",
+            "mainClass": "com.example.demo.DemoApplication",
+            "projectName": "demo"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AudibleCartApplication<AudibleCart>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.audiocart.AudibleCartApplication",
+            "projectName": "AudibleCart",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AudibleCartApplication<AudioBook>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.audiocart.AudibleCartApplication",
+            "projectName": "AudioBook",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AudibleCartApplication<Customer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.audiocart.AudibleCartApplication",
+            "projectName": "Customer",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GatewayMSApplication<GatewayMS>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.audible.gatewaymicroservice.GatewayMSApplication",
+            "projectName": "GatewayMS",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PaymentMsApplication<PaymentMS>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.payment.PaymentMsApplication",
+            "projectName": "PaymentMS",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
